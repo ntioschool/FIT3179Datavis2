@@ -72,6 +72,12 @@
             transition: transform 0.3s ease;
         }
         
+        .visualization div {
+            width: 100%; /* Make the visualizations responsive to the container */
+            height: 0;
+            padding-bottom: 50%; /* Maintain aspect ratio (50% for 2:1 ratio) */
+        }
+
         select {
             font-family: 'Poppins', sans-serif;
             font-size: 16px; 
