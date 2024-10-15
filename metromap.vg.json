@@ -1,0 +1,132 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1500,
+  "height": 800,
+  "params": [
+    {
+      "name": "mapScale",
+      "value": 40000,  
+      "bind": {
+        "input": "range",
+        "min": 10000,
+        "max": 100000,
+        "step": 1000,
+        "name": "Map Scale: "
+      }
+    }
+  ],
+  "resolve": {"scale": {"color": "independent"}},
+  "layer": [
+    {
+      
+      "data": {
+        "url": "suburb-2-vic.json",
+        "format": {
+          "type": "topojson",
+          "feature": "suburb-2-vic"
+        }
+      },
+      "transform": [{
+        "lookup": "properties.vic_loca_2",
+        "from":{
+          "data":{
+            "url": "data/combined_vehicle_vic_postcode_data.csv"
+          },
+          "key": "Suburb",
+          "fields": ["total"]
+        }
+      },
+      {"calculate": "datum.total + 0.1", "as": "Total Vehicles"}
+      ],
+      "mark": {
+        "type": "geoshape"
+      },
+      "encoding": {
+        "color": {
+          "field": "Total Vehicles",
+          "type": "quantitative",
+          "scale": {
+            "type": "log",
+            "scheme": "oranges"
+          },
+          "legend": {
+            "labelFontSize": 15,  
+            "titleFontSize": 23,  
+            "symbolSize": 300 
+          }
+        },
+        "tooltip": [
+          {"field": "properties.vic_loca_2", "type": "nominal", "title":
+"Suburb"},
+{"field": "Total Vehicles", "type": "quantitative"}
+
+        ]
+      },
+      "projection": {
+        "type": "mercator",
+        "scale": {"expr": "mapScale"},  
+        "center": [144.9631, -37.8136],
+        "translate": [800, 400]
+      }
+    },
+    {
+      
+      "data": {
+        "url": "data/station_totals_coordinates.csv",
+        "format": {
+          "type": "csv"
+        }
+      },
+      "mark": {
+        "type": "point",
+        
+        "filled": true,
+        "opacity": 1,
+        "size": 150
+      },
+      "projection": {
+        "type": "mercator",
+        "scale": {"expr": "mapScale"},  
+        "center": [144.9631, -37.8136],
+        "translate": [800, 400]
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Station_Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Station_Latitude",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Total_Passenger_Boardings",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "blues",
+            "domainMin": 100,
+            "domainMax": 50000
+          },
+          "title": "Passenger Boardings",
+          "legend": {
+            "labelFontSize": 15,  
+            "titleFontSize": 17,  
+            "symbolSize": 300 
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Station_Name",
+            "type": "nominal",
+            "title": "Station Name"
+          },
+          {
+            "field": "Total_Passenger_Boardings",
+            "type": "quantitative",
+            "title": "Total Boardings"
+          }
+        ]
+      }
+    }
+  ]
+}

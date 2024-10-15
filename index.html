@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualizations</title>
+    
+    <!-- Custom Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mate+SC&display=swap" rel="stylesheet">
+    
+    <!-- Styling for the page -->
+    <style>
+        body {
+            font-family: "Mate SC", serif;
+            font-weight: 400;
+            font-style: normal;
+            background-color: #fff3e0; /* Light orange background */
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 85%;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+
+            text-align: center;
+            font-size: 3rem;
+            color: #000000; /* Dark orange for heading */
+            margin-bottom: 60px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        /*Main orange
+        color: #e65100;
+        light orange
+        color: #fc9139;
+        
+        D Blue
+        color: #0073ff
+        L Blue
+        color: #009dff;
+        */
+        .section {
+            margin-bottom: 60px;
+        }
+        
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #4b4b4b; /* Slightly lighter orange */
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .visualization {
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: #fff; /* White background for visualizations */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        select {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px; 
+            padding: 10px; 
+            border-radius: 5px; 
+            border: 2px solid #ccc;
+            background-color: #f9f9f9; 
+        }
+        label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px; 
+            font-weight: bold; 
+            margin-right: 10px; 
+        }
+
+
+        .description {
+            font-family: 'Poppins', sans-serif;
+            text-align: justify;
+            padding: 15px 20px;
+            background-color: #fff;
+            border-left: 5px solid #ff8f00; /* Bright orange border for descriptions */
+            margin: 20px auto;
+            border-radius: 5px;
+            max-width: 1000px;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .description p {
+            margin: 0;
+        }
+
+        .image-slot {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .image-slot img {
+            width: 30%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .viz-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .viz-column {
+            flex: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #e65100; /* Dark orange footer */
+            color: #fff;
+            margin-top: 50px;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .description {
+                padding: 10px 15px;
+            }
+            .image-slot img {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+            .image-slot {
+                flex-direction: column;
+                align-items: center;
+            }
+            .viz-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h1>Public transport in Victoria</h1>
+
+        
+        <div class="section">
+            <div class="visualization">
+                <h2>New <span style="color: #fc9139;">Vehicle registrations</span> to <span style="color: #009dff;">Metro station boardings</span></h2>
+                <div id="viz1"></div>
+            </div>
+            <div class="description">
+                <p>This map displays the <span style="color: #fc9139;font-size: 1.8rem;font-weight: bold; ">vehicles registered per suburb</span> to the <span style="color: #009dff;font-size: 1.8rem;font-weight: bold; ">passengers boarding metro stations</span> from 2020 to 2022. 
+                We can see that the availability of metro stations in the area reduce the number of new vehicles registered in the surrounding suburb. This is likely due to the availability of public transport within the area.</p>
+            </div>
+        </div>
+
+
+        
+        <h2><span style="color: #009dff;">Metro</span> passengers to Weekdays</h2>
+        <div class="section">
+            <div class="section viz-row" style="margin-bottom: 0px;">
+                <div class="viz-column" >
+                    <div class="visualization"style="padding-top: 25px;">
+                        <div id="viz2"></div>
+                    </div>
+                </div>
+                <div class="viz-column">
+                    <div class="visualization"style="padding-top: 25px;">
+                        <div id="viz3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="section">
+            <div class="visualization">
+                <h2> <span style="color: #fc9139;">Vehicle registrations</span> to <span style="color: #009dff;">Passenger boardings</span> over time</h2>
+                <div id="viz4"></div>
+            </div>
+            <div class="description">
+                <p>Looking at the visualization we can see that every time the victorian government imposed a lockdown the number of passengers on the metro goes down but the vehicle registration numbers remain consistent. This data shows that there is little effect on the over all consistency of purchasing new vehicles in victoria</p>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <div class="visualization">
+                <h2><span style="color: #009dff;">Metro</span> most used lines over time</h2>
+                <div id="viz5"></div>
+            </div>
+        </div>
+
+        
+        <footer>
+            <p>Created by Nathan Andrew Tionardi 32909225</p>
+        </footer>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <script>
+        vegaEmbed('#viz1', 'metromap.vg.json');
+        vegaEmbed('#viz2', 'bar.json');
+        vegaEmbed('#viz5', 'line.vg.json');
+        vegaEmbed('#viz4', 'routes.vg.json');
+        vegaEmbed('#viz3', 'punchcard.vg.json');
+    </script>
+</body>
+</html>

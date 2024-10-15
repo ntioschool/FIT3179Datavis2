@@ -1,0 +1,116 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "data/grouped_train_service_passenger_data.csv"
+    },
+    
+    "vconcat": [
+      {
+        "width": 1400,
+        "height": 600,
+        "mark": {
+            "type": "area",
+            "point": true,
+            "tooltip": true
+          },
+          "params": [{
+            "name": "linechooser",
+            "select": {"type": "point", "fields": ["Line_Name"]},
+            "bind": "legend"
+          }],
+        "encoding": {
+          "x": {
+            "field": "YearMonth",
+            "type": "temporal",
+            "scale": { "domain": { "param": "brush" } },
+            "axis": { "title": "Month" ,"labelFontSize":15,
+            "titleFontSize":17}
+          },
+          "y": {
+            "field": "total_passenger_boardings",
+            "type": "quantitative",
+            "title": "Total Passenger Boardings",
+            "axis":{
+            "labelFontSize":15,
+            "titleFontSize":17}
+          },
+          "color":{
+            "field": "Line_Name",
+            "type": "nominal",
+            "title": "Lines",
+            "scale": {"scheme": "tableau20"},
+            "legend": {
+              "labelFontSize": 15,  
+              "titleFontSize": 22,  
+              "symbolSize": 300 
+            }
+          },
+          "opacity": {
+            "condition": {"param": "linechooser", "value": 1},
+            "value": 0.2
+          }
+        },
+        "transform": [
+          {
+            "calculate": "toDate(datum.Year + '-' + datum.Month + '-01')",
+            "as": "YearMonth"
+          }
+        ]
+      },
+      {
+        "width": 1400,
+        "height": 150,
+        "mark": "area",
+        "params": [
+          {
+            "name": "brush",
+            "select": {
+              "type": "interval",
+              "encodings": ["x"]
+            }
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "YearMonth",
+            "type": "temporal",
+            "title":null,
+            "axis":{
+              "labelFontSize":15,
+              "titleFontSize":17}
+          },
+          "y": {
+            "field": "total_passenger_boardings",
+            "type": "quantitative",
+            "axis": {
+              "tickCount": 3,
+              "grid": false,
+              "labelFontSize":15,
+              "titleFontSize":17
+            },
+            "title":null,
+            "sort": "ascending"
+          },
+          "color": {
+            "field": "Line_Name",
+            "type": "nominal",
+            "scale": {"scheme": "tableau20"},
+            "legend": {
+              "title": "Lines"
+            }
+          },
+          "opacity": {
+            "condition": {"param": "linechooser", "value": 1},
+            "value": 0.2
+          }
+        },
+        "transform": [
+          {
+            "calculate": "toDate(datum.Year + '-' + datum.Month + '-01')",
+            "as": "YearMonth"
+          }
+        ]
+      }
+    ]
+  }
+  

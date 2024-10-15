@@ -1,0 +1,37 @@
+"Day_of_Week","Day_Type","Mode","Total_Passenger_Boardings"
+"Friday","Normal Weekday","Metro",437820
+"Friday","Normal Weekday","VLine",37180
+"Friday","Public Holiday","Metro",12370
+"Friday","Public Holiday","VLine",1400
+"Friday","School Holiday","Metro",84920
+"Friday","School Holiday","VLine",7450
+"Monday","Normal Weekday","Metro",346950
+"Monday","Normal Weekday","VLine",27370
+"Monday","Public Holiday","Metro",38490
+"Monday","Public Holiday","VLine",3350
+"Monday","School Holiday","Metro",79240
+"Monday","School Holiday","VLine",6060
+"Saturday","Public Holiday","Metro",16670
+"Saturday","Public Holiday","VLine",1900
+"Saturday","Saturday","Metro",342860
+"Saturday","Saturday","VLine",25620
+"Sunday","Public Holiday","Metro",16330
+"Sunday","Public Holiday","VLine",1140
+"Sunday","Sunday","Metro",238680
+"Sunday","Sunday","VLine",17440
+"Thursday","Normal Weekday","Metro",464280
+"Thursday","Normal Weekday","VLine",39240
+"Thursday","School Holiday","Metro",111440
+"Thursday","School Holiday","VLine",10420
+"Tuesday","Normal Weekday","Metro",415060
+"Tuesday","Normal Weekday","VLine",34870
+"Tuesday","Public Holiday","Metro",11050
+"Tuesday","Public Holiday","VLine",700
+"Tuesday","School Holiday","Metro",105420
+"Tuesday","School Holiday","VLine",10440
+"Wednesday","Normal Weekday","Metro",443380
+"Wednesday","Normal Weekday","VLine",35210
+"Wednesday","Public Holiday","Metro",2110
+"Wednesday","Public Holiday","VLine",300
+"Wednesday","School Holiday","Metro",117850
+"Wednesday","School Holiday","VLine",10370

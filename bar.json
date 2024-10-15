@@ -1,0 +1,64 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "data/passenger_per_day_type.csv"},
+  "height": 237,
+  "width":500,
+  "mark": "bar",
+  "params": [
+    {
+      "name": "daytype",
+      "value": "All Types",
+      "bind": {
+        "input": "select",
+        "options": ["All Types","School Holiday", "Public Holiday","Normal Weekday"],
+        "name": "Select Day Type: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter" : "datum.Day_Type == daytype || daytype == 'All Types'"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Day_of_Week",
+      "type": "ordinal",
+      "title": "Month of the year",
+      "sort": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "axis": {
+        "labelFontSize": 18,  
+        "titleFontSize": 20, 
+        "title": "Days of the week",
+        "labelAngle": 45,
+        "labelFont" :"arial"
+    }},
+    "y": {
+      "field": "Total_Passenger_Boardings",
+      "aggregate": "sum",
+      "type": "quantitative",
+      "title": "Passengers boarded",
+      "axis": {
+        "labelFontSize": 15,  
+        "titleFontSize": 14, 
+        "title": "Days of the week",
+        "labelAngle": 0,
+        "labelFont" :"arial"
+    }
+    },
+    "color": {
+      "field": "Mode",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Metro", "VLine"],
+        "range": ["#1f77b4", "#9467bd"]
+      },
+      "title": "Train Type",
+      "legend": {
+        "labelFontSize": 15,  
+        "titleFontSize": 17,  
+        "symbolSize": 300 
+      }
+    }
+  }
+}

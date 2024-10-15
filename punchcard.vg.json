@@ -1,0 +1,86 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 700,
+    "height":300,
+    "data": {
+      "url": "data/train_service_by_day_mode_hour_avg.csv"
+    },
+    "params": [
+      {
+        "name": "modeFilter",
+        "value": "Metro",
+        "bind": {
+          "input": "select",
+          "options": ["Metro", "VLine"],
+          "name": "Select Mode: "
+        }
+      }
+    ],
+    "transform": [
+      {
+        "filter": "datum.Mode == modeFilter"
+      }
+    ],
+    "mark": "circle",
+    "encoding": {
+      "x": {
+        "field": "Rounded_Hour",
+        "type": "ordinal",
+        "title": "Hour of Day",
+        "axis": {
+        "labelFontSize": 18,  
+        "titleFontSize": 20, 
+        "title": "Hours in a day (24 Hour time)",
+        "labelAngle": 0,
+        "labelFont" :"arial"
+    },
+        "sort": [0]
+      },
+      "y": {
+        "field": "Day_of_Week",
+        "type": "ordinal",
+        "title": "Day of the Week",
+        "sort": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "axis":{
+          "labelFontSize":15,
+          "titleFontSize":17
+        }
+      },
+      "size": {
+        "field": "Average_Passenger_Boardings",
+        "type": "quantitative",
+        "title": "Avg Passenger Boardings",
+        "scale": {"range": [50, 800] }
+      },
+      "color": {
+        "field": "Average_Passenger_Boardings",
+        "type": "quantitative",
+        "scale": {
+          "scheme": "blues"
+        },
+      "legend": {
+        "labelFontSize": 15,  
+        "titleFontSize": 14,  
+        "symbolSize": 300 
+      }
+      },
+      "tooltip": [
+        {
+          "field": "Day_of_Week",
+          "type": "ordinal",
+          "title": "Day"
+        },
+        {
+          "field": "Rounded_Hour",
+          "type": "ordinal",
+          "title": "Hour"
+        },
+        {
+          "field": "Average_Passenger_Boardings",
+          "type": "quantitative",
+          "title": "Avg Passenger Boardings"
+        }
+      ]
+    }
+  }
+  

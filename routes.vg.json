@@ -1,0 +1,264 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/vehicle_train_monthly_summary.csv"
+  },
+  
+  "vconcat": [
+    {
+      "width": 1400,
+      "height": 600,
+      "resolve": {"scale": {"color": "independent"}},
+      "layer": [{
+        "mark": "rect",
+        "data": {
+          "values": [
+            {
+              "SYear": "2020",
+              "SMonth": "7",
+              "EYear": "2020",
+              "EMonth": "10",
+              "event": "Second Lockdown"
+            },
+            {
+              "SYear": "2021",
+              "SMonth": "2",
+              "EYear": "2021",
+              "EMonth": "3",
+              "event": "Third Lockdown"
+            },
+            {
+              "SYear": "2021",
+              "SMonth": "5",
+              "EYear": "2021",
+              "EMonth": "6",
+              "event": "Fourth Lockdown"
+            },
+            {   
+              "SYear": "2021",
+              "SMonth": "7",
+              "EYear": "2021",
+              "EMonth": "8",
+              "event": "Fifth Lockdown"
+            },
+            {   
+              "SYear": "2021",
+              "SMonth": "8",
+              "EYear": "2021",
+              "EMonth": "11",
+              "event": "Sixth Lockdown"
+            }
+          ]
+        },
+        "transform": [
+          {
+            "calculate": "toDate(datum.SYear + '-' + datum.SMonth + '-01')",
+            "as": "start"
+          },
+          {
+            "calculate": "toDate(datum.EYear + '-' + datum.EMonth + '-01')",
+            "as": "end"
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "start",
+            "timeUnit": "yearmonth"
+          },
+          "x2": {
+            "field": "end",
+            "timeUnit": "yearmonth"
+          },
+          "color": {
+            "field": "event", 
+            "type": "nominal",
+            "scale":{"scheme":"set2"},
+            "legend": {
+              "title": "Events",
+              "labelFontSize": 15,  
+              "titleFontSize": 17,  
+              "symbolSize": 300
+              },"sort":["First Lockdown"]
+          },
+          "opacity": {"value": 0.5}
+
+        }
+      },
+      {"mark": {
+          "type": "line",
+          "point": {
+            "filled": false,
+            "fill": "white"
+          },
+          "tooltip": true
+        },
+        "params": [{
+          "name": "linechooser",
+          "select": {"type": "point", "fields": ["Mode"]},
+          "bind": "legend"
+        }],
+      "encoding": {
+        "x": {
+          "field": "YearMonth",
+          "type": "temporal",
+          "scale": { "domain": { "param": "brush" } },
+          "axis":{
+            "labelFontSize":15,
+            "titleFontSize":17,
+            "title": "Months"
+          }
+        },
+        "y": {
+          "field": "Total",
+          "type": "quantitative",
+          "title": "Total Passenger Boardings",
+          "axis":{
+            "labelFontSize":15,
+            "titleFontSize":17}
+        },
+        "color":{
+          "field": "Mode",
+          "type": "nominal",
+          "title": "Lines",
+          "scale": {"domain": ["Train", "Vehicle"],
+                "range": ["#1f77b4", "#ff7f0e"]},
+          "legend": {
+            "title": "Metro Type",
+            "labelFontSize": 15,  
+            "titleFontSize": 17,  
+            "symbolSize": 300 
+          }
+        },
+        "opacity": {
+          "condition": {"param": "linechooser", "value": 1},
+          "value": 0.2
+        }
+      },
+      "transform": [
+        {
+          "calculate": "toDate(datum.Year + '-' + datum.Month + '-01')",
+          "as": "YearMonth"
+        }
+      ]}]
+    },
+    {
+      "width": 1400,
+      "height": 150,
+      "resolve": {"scale": {"color": "independent"}},
+      "layer": [
+        {"mark": "line",
+        "params": [
+          {
+            "name": "brush",
+            "select": {
+              "type": "interval",
+              "encodings": ["x"]
+            }
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "YearMonth",
+            "type": "temporal",
+            "title":null,
+            "axis":{
+              "labelFontSize":15,
+              "titleFontSize":17}
+          },
+          "y": {
+            "field": "Total",
+            "type": "quantitative",
+            "axis": {
+              "tickCount": 3,
+              "grid": false,
+              "labelFontSize":15,
+              "titleFontSize":17
+            },
+            "title":null
+          },
+          "color": {
+            "field": "Mode",
+            "type": "nominal",
+            "scale": {"domain": ["Train", "Vehicle"],
+                "range": ["#1f77b4", "#ff7f0e"]},
+            "legend": null
+          },
+          "opacity": {
+            "condition": {"param": "linechooser", "value": 1},
+            "value": 0.2
+          }
+        },
+        "transform": [
+          {
+            "calculate": "toDate(datum.Year + '-' + datum.Month + '-01')",
+            "as": "YearMonth"
+          }
+        ]
+      },{
+        "mark": "rect",
+        "data": {
+          "values": [
+            {
+              "SYear": "2020",
+              "SMonth": "7",
+              "EYear": "2020",
+              "EMonth": "10",
+              "event": "Second Lockdown"
+            },
+            {
+              "SYear": "2021",
+              "SMonth": "2",
+              "EYear": "2021",
+              "EMonth": "3",
+              "event": "Third Lockdown"
+            },
+            {
+              "SYear": "2021",
+              "SMonth": "5",
+              "EYear": "2021",
+              "EMonth": "6",
+              "event": "Fourth Lockdown"
+            },
+            {   
+              "SYear": "2021",
+              "SMonth": "7",
+              "EYear": "2021",
+              "EMonth": "8",
+              "event": "Fifth Lockdown"
+            },
+            {   
+              "SYear": "2021",
+              "SMonth": "8",
+              "EYear": "2021",
+              "EMonth": "11",
+              "event": "Sixth Lockdown"
+            }
+          ]
+        },
+        "transform": [
+          {
+            "calculate": "toDate(datum.SYear + '-' + datum.SMonth + '-01')",
+            "as": "start"
+          },
+          {
+            "calculate": "toDate(datum.EYear + '-' + datum.EMonth + '-01')",
+            "as": "end"
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "start",
+            "timeUnit": "yearmonth"
+          },
+          "x2": {
+            "field": "end",
+            "timeUnit": "yearmonth"
+          },
+          "color": {"field": "event", "type": "nominal", "legend":null, "scale":{"scheme":"set2"},"sort":["First Lockdown"]},
+          "opacity": {"value": 0.5}
+        }
+      }
+    ]
+    }
+  ]
+}
