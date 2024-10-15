@@ -6,7 +6,7 @@
   
   "vconcat": [
     {
-      "width": 1200,
+      "width": 1000,
       "height": 600,
       "resolve": {"scale": {"color": "independent"}},
       "layer": [{
@@ -142,7 +142,7 @@
       ]}]
     },
     {
-      "width": 1200,
+      "width": 1000,
       "height": 150,
       "resolve": {"scale": {"color": "independent"}},
       "layer": [
