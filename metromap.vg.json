@@ -66,7 +66,7 @@
         "type": "mercator",
         "scale": {"expr": "mapScale"},  
         "center": [144.9631, -37.8136],
-        "translate": [600, 400]
+        "translate": [570, 300]
       }
     },
     {
@@ -88,7 +88,7 @@
         "type": "mercator",
         "scale": {"expr": "mapScale"},  
         "center": [144.9631, -37.8136],
-        "translate": [600, 400]
+        "translate": [570, 300]
       },
       "encoding": {
         "longitude": {

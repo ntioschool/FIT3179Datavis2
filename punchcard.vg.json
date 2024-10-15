@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 700,
-    "height":300,
+    "width": "container",
+    "height":"container",
     "data": {
       "url": "data/train_service_by_day_mode_hour_avg.csv"
     },
@@ -28,8 +28,8 @@
         "type": "ordinal",
         "title": "Hour of Day",
         "axis": {
-        "labelFontSize": 18,  
-        "titleFontSize": 20, 
+        "labelFontSize": 13,  
+        "titleFontSize": 16, 
         "title": "Hours in a day (24 Hour time)",
         "labelAngle": 0,
         "labelFont" :"arial"
@@ -42,15 +42,15 @@
         "title": "Day of the Week",
         "sort": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         "axis":{
-          "labelFontSize":15,
-          "titleFontSize":17
+          "labelFontSize":12,
+          "titleFontSize":15
         }
       },
       "size": {
         "field": "Average_Passenger_Boardings",
         "type": "quantitative",
         "title": "Avg Passenger Boardings",
-        "scale": {"range": [50, 800] }
+        "scale": {"range": [50, 500] }
       },
       "color": {
         "field": "Average_Passenger_Boardings",

@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "data/passenger_per_day_type.csv"},
-  "height": 237,
-  "width":500,
+  "height": "container",
+  "width":"container",
   "mark": "bar",
   "params": [
     {
