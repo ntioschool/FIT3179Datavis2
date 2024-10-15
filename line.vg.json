@@ -6,7 +6,7 @@
     
     "vconcat": [
       {
-        "width": 1400,
+        "width": 1200,
         "height": 600,
         "mark": {
             "type": "area",
@@ -58,7 +58,7 @@
         ]
       },
       {
-        "width": 1400,
+        "width": 1200,
         "height": 150,
         "mark": "area",
         "params": [
